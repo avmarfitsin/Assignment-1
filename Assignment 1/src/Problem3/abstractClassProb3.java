@@ -5,7 +5,7 @@ public class abstractClassProb3
 {
 	static class Node
 	{
-		 Object obj;
+		 int in;
 		 Node next;
 		 Node last;
 	}
@@ -23,11 +23,11 @@ public class abstractClassProb3
 	}
 	
 	
-	public static void Push(Object o)
+	public static void Push(int i)
 	{
 		Node oldfront=front;
 		front=new Node();
-		front.obj=o;
+		front.in=i;
 		front.next=oldfront;
 		front.last=null;
 		size++;
@@ -44,7 +44,7 @@ public class abstractClassProb3
 	
 	
 	
-	public static Object Pop()
+	public static int Pop()
 	{
 	try
 	{
@@ -55,8 +55,8 @@ public class abstractClassProb3
 			else if(front!=null)
 			rear=front;
 		}
-		Object tempo;
-		tempo=front.obj;
+		int tempo;
+		tempo=front.in;
 		front=front.next;
 		size--;
 		return tempo;
@@ -65,12 +65,12 @@ public class abstractClassProb3
 	{
 		System.out.println("Cannot pop on empty Stack");
 	}
-	return null;
+	return 0;
 	}
 	
-	public static Object Peek()
+	public static int Peek()
 	{
-		return front.obj;
+		return front.in;
 	}
 
 }
