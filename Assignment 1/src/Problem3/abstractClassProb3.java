@@ -1,44 +1,76 @@
 package Problem3;
 
+
 public class abstractClassProb3 
 {
 	static class Node
 	{
-		 int in;
+		 Object obj;
 		 Node next;
+		 Node last;
 	}
 	
-	private static Node top;
+	
+	private static Node rear;
+	private static Node front;
 	static int size;
-	void ArbitraryQueue()
+	public void Stack()
 	{
 		size=0;
-		top=null;
+		rear=null;
+		front=null;
+		
 	}
-	static void Push(int i)
+	
+	
+	public static void Push(Object o)
 	{
-		Node topold=top;
-		top=new Node();
-		top.in=i;
-		top.next=topold;
+		Node oldfront=front;
+		front=new Node();
+		front.obj=o;
+		front.next=oldfront;
+		front.last=null;
+		size++;
+		if(size==1)
+		{
+			if(rear!=null)
+			front=rear;
+			else if(front!=null)
+			rear=front;
+		}
+		if(size>1)
+		oldfront.last=front;
 	}
-	static int Pop()
+	
+	
+	
+	public static Object Pop()
 	{
 	try
 	{
-		Node topold=top;
-		top=top.next;
-		return topold.in;
+		if(size==1)
+		{
+			if(rear!=null)
+			front=rear;
+			else if(front!=null)
+			rear=front;
+		}
+		Object tempo;
+		tempo=front.obj;
+		front=front.next;
+		size--;
+		return tempo;
 	}
 	catch(Exception e)
 	{
-		System.out.println("Can't pop on empty queue");
+		System.out.println("Cannot pop on empty Stack");
 	}
-	return 0;
+	return null;
 	}
-	static int Peek()
+	
+	public static Object Peek()
 	{
-		return top.in;
+		return front.obj;
 	}
 
 }
