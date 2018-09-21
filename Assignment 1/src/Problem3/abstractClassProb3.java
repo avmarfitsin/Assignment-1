@@ -4,29 +4,41 @@ public class abstractClassProb3
 {
 	static class Node
 	{
-		 char ch;
+		 int in;
 		 Node next;
 	}
 	
 	private static Node top;
 	static int size;
-	private void ArbitraryQueue()
+	void ArbitraryQueue()
 	{
 		size=0;
 		top=null;
 	}
-	private static void Push(char c)
+	static void Push(int i)
 	{
 		Node topold=top;
 		top=new Node();
-		top.ch=c;
+		top.in=i;
 		top.next=topold;
 	}
-	private static char Pop()
+	static int Pop()
+	{
+	try
 	{
 		Node topold=top;
 		top=top.next;
-		return topold.ch;
+		return topold.in;
+	}
+	catch(Exception e)
+	{
+		System.out.println("Can't pop on empty queue");
+	}
+	return 0;
+	}
+	static int Peek()
+	{
+		return top.in;
 	}
 
 }

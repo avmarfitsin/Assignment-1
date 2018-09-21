@@ -9,12 +9,6 @@ public class Prob1 extends abstractClassProb1{
 		Push("big mem");
 		Enqueue("no chef");
 		Push("edx2");
-		System.out.println(Dequeue());
-		System.out.println(Pop());
-		System.out.println(Dequeue());
-		System.out.println(Traverse(0));
-		System.out.println(Traverse(1));
-		System.out.println(Traverse(2));
-		
+	
 	}
 }

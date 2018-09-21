@@ -80,7 +80,7 @@ abstract class abstractClassProb1 {
 	}
 	catch(Exception e)
 	{
-		System.out.println("Cannot dequeue on empty ArbitraryQueue");
+		System.out.println("Cannot pop on empty ArbitraryQueue");
 	}
 	return null;
 	}
