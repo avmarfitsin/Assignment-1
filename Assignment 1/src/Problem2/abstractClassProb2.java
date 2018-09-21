@@ -14,7 +14,6 @@ static void Push(Object o)
 	{
 	for(int i=1;i<size;i++)
 	{
-		//System.out.println(i);
 		arr[i]=out[i-1];
 	}
 	}
