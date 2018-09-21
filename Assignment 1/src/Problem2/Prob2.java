@@ -15,7 +15,6 @@ public static void main(String[] args)
 	System.out.println(Pop());
 	System.out.println(Pop());
 	System.out.println(Pop());
-	System.out.println(Pop());
 	System.out.println(Dequeue());
 	System.out.println(Dequeue());
 	System.out.println(Dequeue());
