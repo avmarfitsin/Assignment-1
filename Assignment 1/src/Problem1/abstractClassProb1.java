@@ -59,16 +59,19 @@ abstract class abstractClassProb1 {
 	{
 	try
 	{
-		if(size==1)	//have to make sure front and rear are declared properly in case one node, again
+		if(size==1)	//different handling for length 1, as front and rear are same
 		{
-			if(rear!=null)
-			front=rear;
-			else if(front!=null)
-			rear=front;
+			Object tempa;
+			tempa=front.obj;
+			front=null;
+			rear=null;
+			size--;
+			return tempa;
 		}
 		Object tempo;
 		tempo=front.obj;
 		front=front.next;
+		front.last=null;
 		size--;	//linked list loses 1 in length after a Pop operation
 		return tempo;
 	}
@@ -84,17 +87,21 @@ abstract class abstractClassProb1 {
 	{
 		try
 	{
-		if(size==1)	//same provisions for the 1 node case as before
-		{
-			if(rear!=null)
-			front=rear;
-			else if(front!=null)
-			rear=front;
-		}
+			if(size==1)	//same provisions for the 1 node case as before
+			{
+				Object tempa;
+				tempa=rear.obj;
+				front=null;
+				rear=null;
+				size--;
+				return tempa;
+			}
 		Object tempo;
 		tempo=rear.obj;
 		rear=rear.last;
+		rear.next=null;
 		size--;	//linked list loses 1 after dequeue
+
 		return tempo;
 	}
 		catch (Exception e)
