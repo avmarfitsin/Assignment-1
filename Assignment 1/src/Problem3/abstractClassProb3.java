@@ -1,76 +1,103 @@
 package Problem3;
 
-
 public class abstractClassProb3 
+//class not tagged abstract in order to be able to be instantiated
 {
-	static class Node
+	
+	private Node top;
+
+	public abstractClassProb3()
 	{
-		 int in;
-		 Node next;
-		 Node last;
-	}
-	
-	
-	private static Node rear;
-	private static Node front;
-	static int size;
-	public void Stack()
-	{
-		size=0;
-		rear=null;
-		front=null;
-		
-	}
-	
-	
-	public static void Push(int i)
-	{
-		Node oldfront=front;
-		front=new Node();
-		front.in=i;
-		front.next=oldfront;
-		front.last=null;
-		size++;
-		if(size==1)
-		{
-			if(rear!=null)
-			front=rear;
-			else if(front!=null)
-			rear=front;
-		}
-		if(size>1)
-		oldfront.last=front;
-	}
-	
-	
-	
-	public static int Pop()
-	{
-	try
-	{
-		if(size==1)
-		{
-			if(rear!=null)
-			front=rear;
-			else if(front!=null)
-			rear=front;
-		}
-		int tempo;
-		tempo=front.in;
-		front=front.next;
-		size--;
-		return tempo;
-	}
-	catch(Exception e)
-	{
-		System.out.println("Cannot pop on empty Stack");
-	}
-	return 0;
-	}
-	
-	public static int Peek()
-	{
-		return front.in;
+		top = null;
 	}
 
+		class Node
+		{
+			public Node next;
+			public int in;
+		}
+
+	
+	public static void sortInsertion(abstractClassProb3 st) 
+	{
+		
+		abstractClassProb3 st1 = new abstractClassProb3();//instantiating a second stack to use during sorting
+	    
+		if (st.top!=null) //make sure we're not sorting an empty stack
+		{
+
+	    while (st.top!=null) 
+	    {
+	    	//System.out.println("In loop1");
+	      int temp = st.Pop();
+	      
+	      if (st1.top != null) 
+	      {
+	        int temp1 = st1.Peek();
+	        
+	        if (temp > temp1) 
+	        {
+	        	while (st1.top!=null) 
+	        	{
+	        		//System.out.println("In loop2");
+	      	      int copy = st1.Pop();
+	      	      st.Push(copy);
+	      	      System.out.println("Swapped "+temp+" with "+temp1);
+	      	    }
+	        
+	        }
+	      }
+	      
+	      st1.Push(temp);
+	      
+	    }
+	    while (st1.top!=null) 
+	    {
+	    	//System.out.println("In loop3");
+		      int copy = st1.Pop();
+		      st.Push(copy);
+		}
+	    
+		}
+	  }
+	
+	
+	public void Push(int in)	//standard push method, like used in prob1
+	{
+		Node topold=top;
+		top=new Node();
+		top.in=in;
+		top.next=topold;
+	}
+	
+	
+	public int Pop()	//similar pop to prob1 too
+	{
+		try
+		{
+			Node topold=top;
+			top=top.next;
+			return topold.in;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Stack is empty");
+		}
+		return -1;
+	}
+	
+	
+	public int Peek()	//accesses the data in the top of the stack without popping it
+	{
+		try
+		{
+			int peekint=top.in;
+			return peekint;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Stack is empty");
+		}
+		return -1;
+	}
 }

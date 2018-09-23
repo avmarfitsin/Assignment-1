@@ -8,21 +8,17 @@ public class abstractClassProb4 {
 		 Node next;
 	}
 	
-	private static Node top;
-	static int size;
-	private void ArbitraryQueue()
-	{
-		size=0;
-		top=null;
-	}
-	private static void Push(char c)
+	private static Node top=null;
+	static int size=0;
+	
+	private static void Push(char c)	//familiar push function used in prob1 and 2
 	{
 		Node topold=top;
 		top=new Node();
 		top.ch=c;
 		top.next=topold;
 	}
-	private static char Pop()
+	private static char Pop()	//similar pop too
 	{
 		Node topold=top;
 		top=top.next;
@@ -32,16 +28,16 @@ public class abstractClassProb4 {
 	{
 	try
 	{
-		String out="";
+		String out="";	//creating a string we'll append to for output
 		for(int i=0;i<s.length();i++)
 		{
-			Push(s.charAt(i));
+			Push(s.charAt(i));	//adding each character in input string one by one to stack
 		}
 		for(int i=0;i<s.length();i++)
 		{
-			out+=Pop();
+			out+=Pop();	//adding each character one by one from the stack to an output string
 		}
-		return out;
+		return out;	//because of stack's nature, the characters are popped in reverse order from their input
 	}
 	catch (Exception e)
 	{

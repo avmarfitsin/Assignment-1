@@ -9,27 +9,21 @@ abstract class abstractClassProb1 {
 	}
 	
 	
-	private static Node rear;
-	private static Node front;
-	static int size;
-	public void ArbitraryQueue()
-	{
-		size=0;
-		rear=null;
-		front=null;
-		
-	}
+	private static Node rear=null;
+	private static Node front=null;
+	static int size=0;
+
 	
 	
 	public static void Push(Object o)
 	{
-		Node oldfront=front;
-		front=new Node();
+		Node oldfront=front;	//storing old position of front
+		front=new Node();	//creating new front
 		front.obj=o;
-		front.next=oldfront;
+		front.next=oldfront;	//linking up old front and new
 		front.last=null;
-		size++;
-		if(size==1)
+		size++;	//linked list gets bigger by 1 after Push
+		if(size==1)	//this is here in case there's one node, in which case it's both front and rear
 		{
 			if(rear!=null)
 			front=rear;
@@ -37,19 +31,19 @@ abstract class abstractClassProb1 {
 			rear=front;
 		}
 		if(size>1)
-		oldfront.last=front;
+		oldfront.last=front;	//if more than one node, can link up normally
 	}
 	
 	
 	public static void Enqueue(Object o)
 	{
-		Node oldrear=rear;
-		rear=new Node();
+		Node oldrear=rear;	//storing old position of rear
+		rear=new Node();	//creating new rear
 		rear.obj=o;
 		rear.next=null;
-		rear.last=oldrear;
-		size++;
-		if(size==1)
+		rear.last=oldrear;	//linking up old rear and new
+		size++;	//linked list gains 1 in size after Enqueue
+		if(size==1)	//if one node, it is both front and rear
 		{
 			if(rear!=null)
 			front=rear;
@@ -65,7 +59,7 @@ abstract class abstractClassProb1 {
 	{
 	try
 	{
-		if(size==1)
+		if(size==1)	//have to make sure front and rear are declared properly in case one node, again
 		{
 			if(rear!=null)
 			front=rear;
@@ -75,7 +69,7 @@ abstract class abstractClassProb1 {
 		Object tempo;
 		tempo=front.obj;
 		front=front.next;
-		size--;
+		size--;	//linked list loses 1 in length after a Pop operation
 		return tempo;
 	}
 	catch(Exception e)
@@ -90,7 +84,7 @@ abstract class abstractClassProb1 {
 	{
 		try
 	{
-		if(size==1)
+		if(size==1)	//same provisions for the 1 node case as before
 		{
 			if(rear!=null)
 			front=rear;
@@ -100,7 +94,7 @@ abstract class abstractClassProb1 {
 		Object tempo;
 		tempo=rear.obj;
 		rear=rear.last;
-		size--;
+		size--;	//linked list loses 1 after dequeue
 		return tempo;
 	}
 		catch (Exception e)
@@ -115,13 +109,13 @@ abstract class abstractClassProb1 {
 	{
 		try{
 		Node point=new Node();
-		if(index==0)
+		if(index==0)	//if index passed is 0 user is referring to what is the front of the list
 		{
 			return front.obj;
 		}
 		else
 			point=front;
-			for(int i=0; i<index; i++)
+			for(int i=0; i<index; i++)	//starting from the front, loop through linked list until given index
 			{
 				point=point.next;
 			}
