@@ -9,7 +9,7 @@ public class Prob3 extends abstractClassProb3
 		lls.Push(2);
 		lls.Push(1);
 		lls.Push(3);
-		sortInsertion(lls);
+		InsertionSort(lls);
 		System.out.println(lls.Pop());
 		System.out.println(lls.Pop());
 		System.out.println(lls.Pop());

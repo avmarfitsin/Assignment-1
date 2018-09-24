@@ -18,7 +18,7 @@ public class abstractClassProb3
 		}
 
 	
-	public static void sortInsertion(abstractClassProb3 st) 
+	public static void InsertionSort(abstractClassProb3 st) 
 	{
 		
 		abstractClassProb3 st1 = new abstractClassProb3();//instantiating a second stack to use during sorting
